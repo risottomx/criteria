@@ -1,5 +1,5 @@
 {
-  "name": "criteria",
+  "name": "@risotto/criteria",
   "version": "0.0.1",
   "description": "Risotto library to use criteria/specification pattern",
   "main": "index.js",
