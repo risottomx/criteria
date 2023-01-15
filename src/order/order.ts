@@ -27,7 +27,7 @@ export class Order {
     return new Order(new OrderBy(orderBy), new OrderType(OrderTypes.ASC));
   }
 
-  hasOrder() {
+  hasOrder(): boolean {
     return !this.orderType.isNone();
   }
 }
