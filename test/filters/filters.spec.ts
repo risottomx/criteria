@@ -1,6 +1,4 @@
-import { Filters } from '../../src/filters/filters';
-import { FilterType } from '../../src/filters/filter';
-import { Operator } from '../../src/filters/filter-operator';
+import { Filters, FilterType, Operator } from '../../src/filters';
 
 describe('Filters', () => {
   it('should create filters', () => {

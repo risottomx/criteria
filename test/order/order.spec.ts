@@ -1,5 +1,4 @@
-import { Order, OrderBy, OrderType } from '../../src/order';
-import { OrderTypes } from '../../src/order/order-type';
+import { Order, OrderBy, OrderType, OrderTypes } from '../../src/order';
 
 describe('Order', () => {
   it('should create Order', () => {
@@ -18,7 +17,7 @@ describe('Order', () => {
   it('should create Order from values if no param is provided', () => {
     const order = Order.fromValues();
     expect(order).toBeDefined();
-    expect(order.orderType.value).toBe('none');
+    expect(order.orderType.value).toBe('NONE');
   });
 
   it('should create Order with none', () => {
@@ -28,12 +27,12 @@ describe('Order', () => {
 
   it('should create Order with asc', () => {
     const order = Order.asc('email');
-    expect(order.orderType.value).toBe('asc');
+    expect(order.orderType.value).toBe('ASC');
   });
 
   it('should create Order with desc', () => {
     const order = Order.desc('email');
-    expect(order.orderType.value).toBe('desc');
+    expect(order.orderType.value).toBe('DESC');
   });
 
   it('should get hasOrder()', () => {

@@ -1,8 +1,12 @@
 import { InvalidArgumentError } from '@risotto/value-objects/exceptions';
-import { Filter, FilterType } from '../../src/filters/filter';
-import { FilterField } from '../../src/filters/filter-field';
-import { FilterOperator, Operator } from '../../src/filters/filter-operator';
-import { FilterValue } from '../../src/filters/filter-value';
+import {
+  Filter,
+  FilterField,
+  FilterOperator,
+  FilterType,
+  FilterValue,
+  Operator,
+} from '../../src/filters';
 
 describe('Filter', () => {
   it('should create filter', () => {

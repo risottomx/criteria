@@ -1,5 +1,5 @@
 import { InvalidArgumentError } from '@risotto/value-objects/exceptions';
-import { FilterOperator, Operator } from '../../src/filters/filter-operator';
+import { FilterOperator, Operator } from '../../src/filters';
 
 describe('FilterOperator', () => {
   it('should create operator', () => {

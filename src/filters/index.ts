@@ -1,7 +1,15 @@
 import { FilterField } from './filter-field';
-import { FilterOperator } from './filter-operator';
+import { FilterOperator, Operator } from './filter-operator';
 import { FilterValue } from './filter-value';
-import { Filter } from './filter';
+import { Filter, FilterType } from './filter';
 import { Filters } from './filters';
 
-export { FilterField, FilterOperator, FilterValue, Filter, Filters };
+export {
+  FilterField,
+  FilterOperator,
+  Operator,
+  FilterValue,
+  Filter,
+  Filters,
+  FilterType,
+};

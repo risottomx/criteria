@@ -2,9 +2,9 @@ import { EnumValueObject } from '@risotto/value-objects';
 import { InvalidArgumentError } from '@risotto/value-objects/exceptions';
 
 export enum OrderTypes {
-  ASC = 'asc',
-  DESC = 'desc',
-  NONE = 'none',
+  ASC = 'ASC',
+  DESC = 'DESC',
+  NONE = 'NONE',
 }
 
 export class OrderType extends EnumValueObject<OrderTypes> {

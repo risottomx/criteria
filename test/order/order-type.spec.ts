@@ -1,5 +1,5 @@
 import { InvalidArgumentError } from '@risotto/value-objects/exceptions';
-import { OrderType, OrderTypes } from '../../src/order/order-type';
+import { OrderType, OrderTypes } from '../../src/order';
 
 describe('OrderType', () => {
   it('should create OrderType', () => {
@@ -7,14 +7,14 @@ describe('OrderType', () => {
     expect(orderType).toBeDefined();
   });
 
-  it('should create OrderType from value asc', () => {
-    const orderType = OrderType.fromValue('asc');
-    expect(orderType.value).toBe('asc');
+  it('should create OrderType from value ASC', () => {
+    const orderType = OrderType.fromValue('ASC');
+    expect(orderType.value).toBe('ASC');
   });
 
-  it('should create OrderType from value desc', () => {
-    const orderType = OrderType.fromValue('desc');
-    expect(orderType.value).toBe('desc');
+  it('should create OrderType from value DESC', () => {
+    const orderType = OrderType.fromValue('DESC');
+    expect(orderType.value).toBe('DESC');
   });
 
   it('should throw error if value is not valid', () => {

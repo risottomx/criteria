@@ -1,14 +1,13 @@
-import { Criteria } from '../src/criteria';
+import { Criteria } from '../src';
 import {
   Filter,
   FilterField,
   FilterOperator,
   Filters,
   FilterValue,
+  Operator,
 } from '../src/filters';
-import { Operator } from '../src/filters/filter-operator';
-import { Order, OrderBy, OrderType } from '../src/order';
-import { OrderTypes } from '../src/order/order-type';
+import { Order, OrderBy, OrderType, OrderTypes } from '../src/order';
 
 describe('Criteria', () => {
   describe('empty criteria', () => {
