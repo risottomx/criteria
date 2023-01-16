@@ -1,31 +1,34 @@
 import { Filters } from './filters';
 import { Order } from './order';
 
-export type CriteriaExtras = { [key: string | number | symbol]: unknown };
+export type Extras = { [key: string | number | symbol]: unknown };
+
+export interface Options {
+  limit?: number;
+  offset?: number;
+  extras?: Extras[];
+}
 
 export class Criteria {
-  private _extras: CriteriaExtras[] = [];
-
-  get extras(): CriteriaExtras[] {
-    return this._extras;
-  }
+  readonly limit?: number;
+  readonly offset?: number;
+  readonly extras?: Extras[];
 
   constructor(
     readonly filters: Filters,
     readonly order: Order,
-    readonly limit?: number,
-    readonly offset?: number
-  ) {}
+    private _options: Options = {}
+  ) {
+    this.limit = _options.limit;
+    this.offset = _options.offset;
+    this.extras = _options.extras || [];
+  }
 
   hasFilters(): boolean {
     return this.filters.filters.length > 0;
   }
 
-  addExtras(extras: CriteriaExtras[]): void {
-    this._extras = extras;
-  }
-
   hasExtras(): boolean {
-    return this._extras.length > 0;
+    return this.extras.length > 0;
   }
 }

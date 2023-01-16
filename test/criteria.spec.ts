@@ -17,8 +17,12 @@ describe('Criteria', () => {
       expect(criteria).toBeDefined();
     });
 
-    it('should create criteria', () => {
+    it('should not have filters', () => {
       expect(criteria.hasFilters()).toBeFalsy();
+    });
+
+    it('should not have extras', () => {
+      expect(criteria.hasExtras()).toBeFalsy();
     });
   });
 
@@ -44,10 +48,11 @@ describe('Criteria', () => {
   });
 
   describe('extras', () => {
-    const criteria = new Criteria(Filters.none(), Order.none());
-    criteria.addExtras([{ relations: [''] }]);
+    const criteria = new Criteria(Filters.none(), Order.none(), {
+      extras: [{ relations: [] }],
+    });
 
     expect(criteria.hasExtras()).toBeTruthy();
-    expect(criteria.extras).toEqual([{ relations: [''] }]);
+    expect(criteria.extras).toEqual([{ relations: [] }]);
   });
 });
