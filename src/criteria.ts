@@ -4,7 +4,7 @@ import { Order } from './order';
 export type CriteriaExtras = { [key: string | number | symbol]: unknown };
 
 export class Criteria {
-  private _extras: CriteriaExtras[];
+  private _extras: CriteriaExtras[] = [];
 
   get extras(): CriteriaExtras[] {
     return this._extras;
