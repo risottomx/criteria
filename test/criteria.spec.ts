@@ -11,10 +11,7 @@ import { Order, OrderBy, OrderType, OrderTypes } from '../src/order';
 
 describe('Criteria', () => {
   describe('empty criteria', () => {
-    const criteria = new Criteria(
-      new Filters([]),
-      new Order(new OrderBy(''), new OrderType(OrderTypes.NONE))
-    );
+    const criteria = new Criteria(Filters.none(), Order.none());
 
     it('should create criteria', () => {
       expect(criteria).toBeDefined();
@@ -44,5 +41,13 @@ describe('Criteria', () => {
     it('should create criteria', () => {
       expect(criteria.hasFilters()).toBeTruthy();
     });
+  });
+
+  describe('extras', () => {
+    const criteria = new Criteria(Filters.none(), Order.none());
+    criteria.addExtras([{ relations: [''] }]);
+
+    expect(criteria.hasExtras()).toBeTruthy();
+    expect(criteria.extras).toEqual([{ relations: [''] }]);
   });
 });

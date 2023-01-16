@@ -1,2 +1,2 @@
-import { Criteria } from './criteria';
-export { Criteria };
+import { Criteria, CriteriaExtras } from './criteria';
+export { Criteria, CriteriaExtras };
