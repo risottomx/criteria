@@ -1,6 +1,6 @@
 import { Filters } from './filters';
 import { Order } from './order';
-import { Relations } from './filter-relations';
+import { Relations } from './filter-relations/relations';
 
 export type Extras = { [key: string | number | symbol]: unknown };
 

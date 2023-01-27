@@ -1,30 +1,34 @@
 import { InvalidArgumentError } from '@risotto/value-objects/exceptions';
 import { RelationName } from './relation-name';
-import { RelationField } from './relation-field';
-import { RelationValue } from './relation-value';
+import { FilterField } from '../filters/filter-field';
+import { FilterOperator } from '../filters/filter-operator';
+import { FilterValue } from '../filters/filter-value';
 
-export type RelationType = 'name' | 'field' | 'value';
+export type FilterRelationType = 'relation' | 'field' | 'operator' | 'value';
 
 export class Relation {
   constructor(
-    readonly name: RelationName,
-    readonly field: RelationField,
-    readonly value: RelationValue
+    readonly relation: FilterField,
+    readonly field: FilterField,
+    readonly operator: FilterOperator,
+    readonly value: FilterValue
   ) {}
 
-  static fromValues(values: Map<RelationType, string>): Relation {
-    const name = values.get('name');
+  static fromValues(values: Map<FilterRelationType, string>): Relation {
+    const relation = values.get('relation');
     const field = values.get('field');
+    const operator = values.get('operator');
     const value = values.get('value');
 
-    if (!name || !field || !value) {
-      throw new InvalidArgumentError(`The relation is invalid`);
+    if (!relation || !field || !operator || !value) {
+      throw new InvalidArgumentError(`The filter is invalid`);
     }
 
     return new Relation(
-      new RelationName(name),
-      new RelationField(field),
-      new RelationValue(value)
+      new RelationName(relation),
+      new FilterField(field),
+      FilterOperator.fromValue(operator),
+      new FilterValue(value)
     );
   }
 }
