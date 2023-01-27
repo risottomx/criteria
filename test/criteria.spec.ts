@@ -1,4 +1,5 @@
 import { Criteria } from '../src';
+import { Relations } from '../src/filter-relations';
 import {
   Filter,
   FilterField,
@@ -47,12 +48,24 @@ describe('Criteria', () => {
     });
   });
 
-  describe('extras', () => {
-    const criteria = new Criteria(Filters.none(), Order.none(), {
-      extras: [{ relations: [] }],
-    });
+  describe('relations', () => {
+    it('should create relations', () => {
+      const criteria = new Criteria(Filters.none(), Order.none(), {
+        filterRelations: Relations.none(),
+      });
 
-    expect(criteria.hasExtras()).toBeTruthy();
-    expect(criteria.extras).toEqual([{ relations: [] }]);
+      expect(criteria.hasFilterRelations()).toBeFalsy();
+    });
+  });
+
+  describe('extras', () => {
+    it('should create extras', () => {
+      const criteria = new Criteria(Filters.none(), Order.none(), {
+        extras: [{ relations: [] }],
+      });
+
+      expect(criteria.hasExtras()).toBeTruthy();
+      expect(criteria.extras).toEqual([{ relations: [] }]);
+    });
   });
 });
