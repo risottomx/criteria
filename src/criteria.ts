@@ -25,7 +25,7 @@ export class Criteria {
     this.limit = _options.limit;
     this.offset = _options.offset;
     this.extras = _options.extras || [];
-    this.filterRelations = _options.filterRelations;
+    this.filterRelations = _options.filterRelations || Relations.none();
   }
 
   hasFilters(): boolean {
