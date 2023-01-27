@@ -1,21 +1,21 @@
 import { Filters } from './filters';
-import { Relations } from './filter-relations/relations';
+import { FilterRelations } from './filter-relations/filter-relations';
 import { Order } from './order';
 
-export type Extras = { [key: string | number | symbol]: unknown };
+export type Relations = { [key: string]: unknown };
 
 export interface Options {
   limit?: number;
   offset?: number;
-  extras?: Extras[];
-  filterRelations?: Relations;
+  relations?: Relations;
+  filterRelations?: FilterRelations;
 }
 
 export class Criteria {
   readonly limit?: number;
   readonly offset?: number;
-  readonly extras?: Extras[];
-  readonly filterRelations?: Relations;
+  readonly relations?: Relations;
+  readonly filterRelations?: FilterRelations;
 
   constructor(
     readonly filters: Filters,
@@ -24,16 +24,16 @@ export class Criteria {
   ) {
     this.limit = _options.limit;
     this.offset = _options.offset;
-    this.extras = _options.extras || [];
-    this.filterRelations = _options.filterRelations || Relations.none();
+    this.relations = _options.relations || {};
+    this.filterRelations = _options.filterRelations || FilterRelations.none();
   }
 
   hasFilters(): boolean {
     return this.filters.filters.length > 0;
   }
 
-  hasExtras(): boolean {
-    return this.extras.length > 0;
+  hasRelation(): boolean {
+    return this.relations.length > 0;
   }
 
   hasFilterRelations(): boolean {

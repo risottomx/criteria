@@ -1,5 +1,5 @@
 import { Criteria } from '../src';
-import { Relations } from '../src/filter-relations';
+import { FilterRelations } from '../src/filter-relations/filter-relations';
 import {
   Filter,
   FilterField,
@@ -20,10 +20,6 @@ describe('Criteria', () => {
 
     it('should not have filters', () => {
       expect(criteria.hasFilters()).toBeFalsy();
-    });
-
-    it('should not have extras', () => {
-      expect(criteria.hasExtras()).toBeFalsy();
     });
   });
 
@@ -48,24 +44,23 @@ describe('Criteria', () => {
     });
   });
 
-  describe('relations', () => {
-    it('should create relations', () => {
+  describe('filter relations', () => {
+    it('should create filter relations', () => {
       const criteria = new Criteria(Filters.none(), Order.none(), {
-        filterRelations: Relations.none(),
+        filterRelations: FilterRelations.none(),
       });
 
       expect(criteria.hasFilterRelations()).toBeFalsy();
     });
   });
 
-  describe('extras', () => {
-    it('should create extras', () => {
+  describe('relations', () => {
+    it('should create relations', () => {
       const criteria = new Criteria(Filters.none(), Order.none(), {
-        extras: [{ relations: [] }],
+        relations: {},
       });
 
-      expect(criteria.hasExtras()).toBeTruthy();
-      expect(criteria.extras).toEqual([{ relations: [] }]);
+      expect(criteria.hasRelation()).toBeFalsy();
     });
   });
 });

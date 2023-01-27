@@ -1,5 +1,10 @@
-import { RelationName } from './relation-name';
-import { Relation, FilterRelationType } from './relation';
-import { Relations } from './relations';
+import { FilterRelationName } from './filter-relation-name';
+import { FilterRelation, FilterRelationType } from './filter-relation';
+import { FilterRelations } from './filter-relations';
 
-export { RelationName, Relation, FilterRelationType, Relations };
+export {
+  FilterRelationName,
+  FilterRelation,
+  FilterRelationType,
+  FilterRelations,
+};
