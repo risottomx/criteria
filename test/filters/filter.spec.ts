@@ -28,20 +28,6 @@ describe('Filter', () => {
     expect(Filter.fromValues(filter)).toBeDefined();
   });
 
-  it('should create filter from values', () => {
-    const filter: FilterType = {
-      field: 'user',
-      operator: Operator.EQUAL,
-      value: {
-        field: 'email',
-        operator: Operator.EQUAL,
-        value: 'test@gmail.com',
-      },
-    };
-
-    expect(Filter.fromValues(filter)).toBeDefined();
-  });
-
   it('should throw error if map is no well formed', () => {
     const filter: FilterType = {
       field: '',

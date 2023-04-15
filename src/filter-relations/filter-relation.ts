@@ -8,7 +8,7 @@ export type FilterRelationType = {
   relation: string;
   field: string;
   operator: string;
-  value: string | FilterRelationType;
+  value: string;
 };
 
 export class FilterRelation {
@@ -16,7 +16,7 @@ export class FilterRelation {
     readonly relation: FilterRelationName,
     readonly field: FilterField,
     readonly operator: FilterOperator,
-    readonly value: FilterValue | FilterRelation
+    readonly value: FilterValue
   ) {}
 
   static fromValues(values: FilterRelationType): FilterRelation {
@@ -33,9 +33,7 @@ export class FilterRelation {
       new FilterRelationName(relation),
       new FilterField(field),
       FilterOperator.fromValue(operator),
-      typeof value === 'object'
-        ? FilterRelation.fromValues(value)
-        : new FilterValue(value)
+      new FilterValue(value)
     );
   }
 }

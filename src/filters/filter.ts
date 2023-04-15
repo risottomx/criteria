@@ -6,14 +6,14 @@ import { FilterValue } from './filter-value';
 export type FilterType = {
   field: string;
   operator: string;
-  value: string | FilterType;
+  value: string;
 };
 
 export class Filter {
   constructor(
     readonly field: FilterField,
     readonly operator: FilterOperator,
-    readonly value: FilterValue | Filter
+    readonly value: FilterValue
   ) {}
 
   static fromValues(values: FilterType): Filter {
@@ -28,9 +28,7 @@ export class Filter {
     return new Filter(
       new FilterField(field),
       FilterOperator.fromValue(operator),
-      typeof value === 'object'
-        ? Filter.fromValues(value)
-        : new FilterValue(value)
+      new FilterValue(value)
     );
   }
 }
