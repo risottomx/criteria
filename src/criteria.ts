@@ -32,10 +32,6 @@ export class Criteria {
     return this.filters.filters.length > 0;
   }
 
-  hasRelation(): boolean {
-    return this.relations.length > 0;
-  }
-
   hasFilterRelations(): boolean {
     return this.filterRelations.relations.length > 0;
   }

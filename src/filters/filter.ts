@@ -3,19 +3,23 @@ import { FilterField } from './filter-field';
 import { FilterOperator } from './filter-operator';
 import { FilterValue } from './filter-value';
 
-export type FilterType = 'field' | 'operator' | 'value';
+export type FilterType = {
+  field: string;
+  operator: string;
+  value: string | FilterType;
+};
 
 export class Filter {
   constructor(
     readonly field: FilterField,
     readonly operator: FilterOperator,
-    readonly value: FilterValue
+    readonly value: FilterValue | Filter
   ) {}
 
-  static fromValues(values: Map<FilterType, string>): Filter {
-    const field = values.get('field');
-    const operator = values.get('operator');
-    const value = values.get('value');
+  static fromValues(values: FilterType): Filter {
+    const field = values.field;
+    const operator = values.operator;
+    const value = values.value;
 
     if (!field || !operator || !value) {
       throw new InvalidArgumentError(`The filter is invalid`);
@@ -24,7 +28,9 @@ export class Filter {
     return new Filter(
       new FilterField(field),
       FilterOperator.fromValue(operator),
-      new FilterValue(value)
+      typeof value === 'object'
+        ? Filter.fromValues(value)
+        : new FilterValue(value)
     );
   }
 }

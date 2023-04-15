@@ -12,12 +12,13 @@ describe('Filters', () => {
   });
 
   it('should create filters from values', () => {
-    const map = new Map<FilterType, string>();
-    map.set('field', 'xxxx');
-    map.set('operator', Operator.EQUAL);
-    map.set('value', 'xxxx');
+    const filter: FilterType = {
+      field: 'xxxx',
+      operator: Operator.EQUAL,
+      value: 'xxxx',
+    };
 
-    const filters = Filters.fromValues([map]);
+    const filters = Filters.fromValues([filter]);
     expect(filters.filters.length).toBe(1);
   });
 });

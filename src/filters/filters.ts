@@ -1,9 +1,9 @@
-import { Filter } from './filter';
+import { Filter, FilterType } from './filter';
 
 export class Filters {
   constructor(readonly filters: Filter[]) {}
 
-  static fromValues(filters: Map<string, string>[]): Filters {
+  static fromValues(filters: FilterType[]): Filters {
     return new Filters(filters.map(Filter.fromValues));
   }
 

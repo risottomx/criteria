@@ -53,14 +53,4 @@ describe('Criteria', () => {
       expect(criteria.hasFilterRelations()).toBeFalsy();
     });
   });
-
-  describe('relations', () => {
-    it('should create relations', () => {
-      const criteria = new Criteria(Filters.none(), Order.none(), {
-        relations: {},
-      });
-
-      expect(criteria.hasRelation()).toBeFalsy();
-    });
-  });
 });
